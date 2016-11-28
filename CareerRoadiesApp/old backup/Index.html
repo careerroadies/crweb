@@ -1,0 +1,73 @@
+﻿<!DOCTYPE html>
+<html class="not-ie no-js" lang="en" ng-app="crApp">
+<!--<![endif]-->
+<head>
+   
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <title>Career Roadies | Index</title>
+
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="shortcut" href="images/favicon.ico" />
+
+    <link rel="stylesheet" href="css/skeleton.css" media="screen" />
+    <link rel="stylesheet" href="css/style.css" media="screen" />
+    <link rel="stylesheet" href="css/login.css" media="screen" />
+    <link rel="stylesheet" href="css/mediaelementplayer.css" media="screen" />
+    <link rel="stylesheet" href="fancybox/jquery.fancybox.css" media="screen" />
+    <link rel="stylesheet" href="css/flexslider-min.css" media="screen" />    
+    <link href="Content/bootstrap.min.css" rel="stylesheet" />
+    <!-- REVOLUTION BANNER CSS SETTINGS -->
+    <link rel="stylesheet" href="rs-plugin/css/settings.css" media="screen" />
+
+    <!-- HTML5 SHIV + DETECT TOUCH EVENTS -->
+    
+</head>
+<body class="color-1 h-style-1 text-1">
+
+    <!-- - - - - - - - - - - - - - Header - - - - - - - - - - - - - - - - -->
+    <div ng-include="'components/shared/views/header.html'"></div>
+    <!-- - - - - - - - - - - - - - end Header - - - - - - - - - - - - - - - - -->
+    
+    <div ng-view></div>
+    <!-- - - - - - - - - - - - - - - Footer - - - - - - - - - - - - - - - - -->
+    <div ng-include="'components/shared/views/footer.html'"></div>
+    <!-- - - - - - - - - - - - - end Footer - - - - - - - - - - - - - -->
+    
+    
+    <script src="js/respond.min.js"></script>
+
+    <!-- JQUERY KENBURN SLIDER  -->
+    <!--<script src="js/jquery.min.js"></script>-->
+    <script src="js/jquery-2.0.3.min.js"></script>
+    <script src="js/jquery.flexslider-min.js"></script>
+    <script src="rs-plugin/js/jquery.themepunch.plugins.min.js"></script>
+    <script src="rs-plugin/js/jquery.themepunch.revolution.min.js"></script>
+    <script src="js/jquery.easing.1.3.js"></script>
+    <script src="js/jquery.cycle.all.min.js"></script>
+    <script src="js/mediaelement-and-player.min.js"></script>
+    <script src="fancybox/jquery.fancybox.pack.js"></script>
+    <script src="js/custom.js"></script>
+    <script type="text/javascript" src="js/modernizr.custom.js"></script>
+    <script src="Scripts/angular.min.js"></script>
+    <script src="Scripts/angular-messages.js"></script>
+    
+    <script src="Scripts/angular-route.min.js"></script>
+    <script src="Scripts/bootstrap.js"></script>
+    <script src="app.module.js"></script>
+    <script src="app.routes.js"></script>
+    <script src="app.controller.js"></script>
+    <script src="configs/config.js"></script>
+    <script src="components/shared/services/ajax-service.js"></script>
+    <script src="components/shared/controllers/home.ctrl.js"></script>
+    <script src="components/shared/directive/slider.directive.js"></script>
+    <script src="components/auth/controllers/register.ctrl.js"></script>
+    <script src="components/auth/services/register.service.js"></script>
+    <script src="components/auth/controllers/profile.ctrl.js"></script>
+    <script src="components/auth/services/profile.service.js"></script>
+    <script src="components/shared/services/dropdown.service.js"></script>
+    <script src="components/shared/services/file.upload.service.js"></script>
+    <script src="components/shared/directive/file.upload.directive.js"></script>
+</body>
+</html>

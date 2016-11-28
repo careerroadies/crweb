@@ -1,0 +1,46 @@
+﻿<div id="page" class="dashboard" ng-controller="dashboardController" ng-init="initializeController()">
+    <div class="row-fluid circle-state-overview">
+        {{welcomeMessage}}
+
+        <div style="width:200px;">
+            <table cellpadding="10" cellspacing="10">
+                <tr>
+                    <td>
+                        <img ng-src="images/prev.png" ng-click="previous()" ng-show="buttonshow" />
+                    </td>
+                    <td ng-repeat="friend in friendsList track by $index" ng-show="(($index < (page * numRecords)) && ($index >= ((page - 1) * numRecords)))">
+                        <div class="profile-header-container">
+                            <div class="profile-header-img">
+                                <img class="img-circle" ng-src="UploadImages/{{friend.profilepicture}}" id="profileimage" ng-click="toggleModal(friend.userid);" />
+
+                                <div class="rank-label-container">
+
+                                    <span class="label label-default rank-label">{{friend.firstname}}</span>
+                                    <!--<table>
+                                        <tr>
+                                            <td>
+                                                Name: {{friend.firstname}}
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                DOB: {{friend.dob| date:'dd/MM/yyyy'}}
+                                            </td>
+                                        </tr>
+                                    </table>-->
+                                </div>
+                            </div>
+                        </div>
+                    </td>
+                    <td>
+                        <img ng-src="images/next.png" ng-click="next()" ng-show="buttonshow" />
+                    </td>
+                </tr>
+            </table>
+
+        </div>
+    </div>
+    <modal-dialog show='modalShown' profile-id='profileId' width='750px' height='60%'>
+        <p>Modal Content Goes here<p>
+    </modal-dialog>
+</div>

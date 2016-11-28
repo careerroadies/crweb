@@ -1,0 +1,63 @@
+﻿<script type="text/javascript">
+    $(document).ready(function () {
+        var placeholder = null;
+        $('input[type=text]').focus(function () {
+            placeholder = $(this).attr("placeholder");
+            $(this).attr("placeholder", "");
+        });
+        $('input[type=text]').blur(function () {
+            $(this).attr("placeholder", placeholder);
+        });
+    });
+</script>
+<form name="myForm" novalidate class="css-form">
+    <div class="main" ng-controller="registerController" ng-init="initializeController();">
+        <div class="two">
+            <div class="register">
+                <h3>{{lable}} </h3>
+
+                <h2>{{message}}</h2>
+
+                <div>
+                    <label for="txtEmail">E-mail</label>
+                    <input type="email" id="txtEmail" class="form-control" accept="" spellcheck="false" name="username"
+                           placeholder="Please enter e-mail" ng-model="username" required />
+                </div>
+                <div class="form-group">
+                    <label for="txtEmail">Password</label>
+                    <input type="text" id="txtPassword" spellcheck="false" name="pasword" placeholder="Please enter password" ng-model="pasword" />
+                    <span class="help-block" ng-show="myForm.username.$error.required">Required</span>
+                </div>
+
+                <div>
+                    <label for="txtMobile">Mobile Number</label>
+                    <input type="text" id="txtMobile" spellcheck="false" placeholder="Please Enter Contact Number" ng-model="contactno" />
+                </div>
+                <div>
+                    <label for="txtDOB">DOB</label>
+                    <input type="date" id="txtDOB" spellcheck="false" placeholder="Please enter Date of Birth" class="textbox" ng-model="dob" />
+                </div>
+
+
+                <div class="sep">
+                    <span class="or">OR</span>
+                </div>
+                <div class="connect">
+                    <div class="social-buttons facebook">
+                        <a href="#">
+                            <span>Facebook</span>
+                        </a>
+                    </div>
+                    <div class="social-buttons twitter">
+                        <a href="#">
+                            <span>Twitter</span>
+                        </a>
+                    </div>
+                </div>
+                <div style="padding-left:200px;">
+                    <input type="submit" value="Register" id="btnRegister" class="button" ng-click="Register()" />
+                </div>
+            </div>
+        </div>
+    </div>
+</form>

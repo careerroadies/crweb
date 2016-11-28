@@ -1,0 +1,778 @@
+﻿
+<div id="tabs-container" ng-controller="profileController as p">
+    <div>
+        Welcome Mrs: {{p.userid}}
+    </div>
+    <ul class="tabs-menu" style="margin: 0px;">
+        <li class="current"><a href="#tab-1">Basic Details</a></li>
+        <li><a href="#tab-2">Address Details</a></li>
+        <li><a href="#tab-3">Education Details</a></li>
+        <li><a href="#tab-4">Professional Details</a></li>
+        <li><a href="#tab-5">Academic Details</a></li>
+    </ul>
+    <div class="tab">
+        <div id="tab-1" class="tab-content">
+            <div class='container' style="width: 860px; height: 500px;padding-left:0px;">
+                <form class='form-horizontal' role='form'>
+                    <div class='form-group'>
+                        <label class='control-label col-md-2 col-md-offset-2' for='id_title'>Name</label>
+                        <div class='col-md-8'>
+                            <div class='col-md-3 indent-small'>
+                                <div class='form-group internal'>
+                                    <input class='form-control' id='id_first_name' placeholder='First Name' type='text' ng-model="p.firstname">
+                                </div>
+                            </div>
+                            <div class='col-md-3 indent-small'>
+                                <div class='form-group internal'>
+                                    <input class='form-control' id='id_last_name' placeholder='Last Name' type='text' ng-model="p.lastname">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class='form-group'>
+                        <label class='control-label col-md-2 col-md-offset-2' for='id_title'>Parents Name</label>
+                        <div class='col-md-8'>
+                            <div class='col-md-3 indent-small'>
+                                <div class='form-group internal'>
+                                    <input class='form-control' id='id_father_name' placeholder='Father Name' type='text' ng-model="p.fathername">
+                                </div>
+                            </div>
+                            <div class='col-md-3 indent-small'>
+                                <div class='form-group internal'>
+                                    <input class='form-control' id='id_mother_name' placeholder='Mother Name' type='text' ng-model="p.mothername">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class='form-group'>
+                        <label class='control-label col-md-2 col-md-offset-2' for='id_checkin'>DOB</label>
+                        <div class='col-md-8'>
+                            <div class='col-md-3'>
+                                <div class='form-group internal input-group'>
+                                    <input type="date" id="id_dob" name="input" ng-model="p.dob"
+                                           placeholder="yyyy-MM-dd" min="2013-01-01" max="2013-12-31" />
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class='control-label col-md-2 col-md-offset-2' for='id_checkin'>Location</label>
+                        <div class='col-md-2 indent-small'>
+                            <div class='form-group internal'>
+                                <input class='form-control' id='id_state_name' autocomplete="off" placeholder='State' type='text' ng-model="p.state">
+                            </div>
+                        </div>
+                        <div class='col-md-2 indent-small'>
+                            <div class='form-group internal'>
+                                <input class='form-control' id='id_city_name' placeholder='city' type='text' ng-model="p.city">
+                            </div>
+                        </div>
+                        <div class='col-md-2 indent-small'>
+                            <div class='form-group internal'>
+                                <input class='form-control' id='id_location_name' placeholder='location' type='text' ng-model="p.location">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class='control-label col-md-2 col-md-offset-2' for='id_checkin'>Contact No</label>
+                        <div class='col-md-2 indent-small'>
+                            <div class='form-group internal'>
+                                <input class='form-control' id='id_state_name' placeholder='Contact Number' type='number' ng-model="p.contactno">
+                            </div>
+                        </div>
+                    </div>
+                    <div class='form-group'>
+                        <label class='control-label col-md-2 col-md-offset-2' for='id_equipment'>Marital Status</label>
+                        <div class='col-md-8'>
+                            <div class='col-md-3'>
+                                <div class='form-group internal'>
+                                    <select class='form-control' id='id_marital_status' ng-model="p.MaritalStatus">
+                                        <option value="0">Unmarried</option>
+                                        <option value="1">Married</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class='control-label col-md-2 col-md-offset-2' for='id_comments'>Upload Image</label>
+                        <div class='col-md-6'>
+                            <input type="file" input-file-control="uploadFile" />
+                            <img ng-src="{{image_sorce}}" width="{{width}}" height="{{height}}" />
+
+                        </div>
+                    </div>
+                    <div class='form-group'>
+                        <label class='control-label col-md-2 col-md-offset-2' for='id_comments'>Write brief</label>
+                        <div class='col-md-6'>
+                            <textarea class='form-control' id='id_profile_text' placeholder='Write about your self.....' rows='3' ng-model="p.profiletext"></textarea>
+                        </div>
+                    </div>
+                    <div class='form-group'>
+                        <div class='col-md-offset-4 col-md-3'>
+                            <button class='btn-lg btn-primary' type='submit' ng-click="p.SaveBasicDetails();">Save</button>
+                        </div>
+                        <div class='col-md-3'>
+                            <button class='btn-lg btn-danger' style='float:right' type='submit'>Cancel</button>
+                        </div>
+                    </div>
+                </form>
+
+            </div>
+        </div>
+
+        <div id="tab-2" class="tab-content">
+            <div class='container' style="width: 860px; height: 500px;padding-left:0px;">
+                <form class='form-horizontal' role='form'>
+                    <div class='form-group'>
+                        <label class='control-label col-md-2 col-md-offset-2' for='id_accomodation'>Accomodation</label>
+                        <div class='col-md-2'>
+                            <select class='form-control' id='id_accomodation'>
+                                <option>RV</option>
+                                <option>Tent</option>
+                                <option>Cabin/Lodging</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class='form-group'>
+                        <label class='control-label col-md-2 col-md-offset-2' for='id_title'>Name</label>
+                        <div class='col-md-8'>
+                            <div class='col-md-2'>
+                                <div class='form-group internal'>
+                                    <select class='form-control' id='id_title'>
+                                        <option>Mr</option>
+                                        <option>Ms</option>
+                                        <option>Mrs</option>
+                                        <option>Miss</option>
+                                        <option>Dr</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class='col-md-3 indent-small'>
+                                <div class='form-group internal'>
+                                    <input class='form-control' id='id_first_name' placeholder='First Name' type='text'>
+                                </div>
+                            </div>
+                            <div class='col-md-3 indent-small'>
+                                <div class='form-group internal'>
+                                    <input class='form-control' id='id_last_name' placeholder='Last Name' type='text'>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class='form-group'>
+                        <label class='control-label col-md-2 col-md-offset-2' for='id_adults'>Guests</label>
+                        <div class='col-md-8'>
+                            <div class='col-md-2'>
+                                <div class='form-group internal'>
+                                    <input class='form-control col-md-8' id='id_adults' placeholder='18+ years' type='number'>
+                                </div>
+                            </div>
+                            <div class='col-md-3 indent-small'>
+                                <div class='form-group internal'>
+                                    <input class='form-control' id='id_children' placeholder='2-17 years' type='number'>
+                                </div>
+                            </div>
+                            <div class='col-md-3 indent-small'>
+                                <div class='form-group internal'>
+                                    <input class='form-control' id='id_children_free' placeholder='&lt; 2 years' type='number'>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class='form-group'>
+                        <label class='control-label col-md-2 col-md-offset-2' for='id_email'>Contact</label>
+                        <div class='col-md-6'>
+                            <div class='form-group'>
+                                <div class='col-md-11'>
+                                    <input class='form-control' id='id_email' placeholder='E-mail' type='text'>
+                                </div>
+                            </div>
+                            <div class='form-group internal'>
+                                <div class='col-md-11'>
+                                    <input class='form-control' id='id_phone' placeholder='Phone: (xxx) - xxx xxxx' type='text'>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class='form-group'>
+                        <label class='control-label col-md-2 col-md-offset-2' for='id_checkin'>Checkin</label>
+                        <div class='col-md-8'>
+                            <div class='col-md-3'>
+                                <div class='form-group internal input-group'>
+                                    <input class='form-control datepicker' id='id_checkin'>
+                                    <span class='input-group-addon'>
+                                        <i class='glyphicon glyphicon-calendar'></i>
+                                    </span>
+                                </div>
+                            </div>
+                            <label class='control-label col-md-2' for='id_checkout'>Checkout</label>
+                            <div class='col-md-3'>
+                                <div class='form-group internal input-group'>
+                                    <input class='form-control datepicker' id='id_checkout'>
+                                    <span class='input-group-addon'>
+                                        <i class='glyphicon glyphicon-calendar'></i>
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class='form-group'>
+                        <label class='control-label col-md-2 col-md-offset-2' for='id_equipment'>Equipment type</label>
+                        <div class='col-md-8'>
+                            <div class='col-md-3'>
+                                <div class='form-group internal'>
+                                    <select class='form-control' id='id_equipment'>
+                                        <option>Travel trailer</option>
+                                        <option>Fifth wheel</option>
+                                        <option>RV/Motorhome</option>
+                                        <option>Tent trailer</option>
+                                        <option>Pickup camper</option>
+                                        <option>Camper van</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class='col-md-9'>
+                                <div class='form-group internal'>
+                                    <label class='control-label col-md-3' for='id_slide'>Slide-outs</label>
+                                    <div class='make-switch' data-off-label='NO' data-on-label='YES' id='id_slide_switch'>
+                                        <input id='id_slide' type='checkbox' value='chk_hydro'>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class='form-group'>
+                        <label class='control-label col-md-2 col-md-offset-2' for='id_service'>Required Service</label>
+                        <div class='col-md-8'>
+                            <select class='multiselect' id='id_service' multiple='multiple'>
+                                <option value='hydro'>Hydro</option>
+                                <option value='water'>Water</option>
+                                <option value='sewer'>Sewer</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class='form-group'>
+                        <label class='control-label col-md-2 col-md-offset-2' for='id_pets'>Pets</label>
+                        <div class='col-md-8'>
+                            <div class='make-switch' data-off-label='NO' data-on-label='YES' id='id_pets_switch'>
+                                <input id='id_pets' type='checkbox' value='chk_hydro'>
+                            </div>
+                        </div>
+                    </div>
+                    <div class='form-group'>
+                        <label class='control-label col-md-2 col-md-offset-2' for='id_comments'>Comments</label>
+                        <div class='col-md-6'>
+                            <textarea class='form-control' id='id_comments' placeholder='Additional comments' rows='3'></textarea>
+                        </div>
+                    </div>
+                    <div class='form-group'>
+                        <div class='col-md-offset-4 col-md-3'>
+                            <button class='btn-lg btn-primary' type='submit'>Save</button>
+                        </div>
+                        <div class='col-md-3'>
+                            <button class='btn-lg btn-danger' style='float:right' type='submit'>Cancel</button>
+                        </div>
+                    </div>
+                </form>
+
+            </div>
+
+        </div>
+
+        <div id="tab-3" class="tab-content">
+            <div class='container' style="width: 860px; height: 500px;padding-left:0px;">
+                <form class='form-horizontal' role='form'>
+                    <div class='form-group'>
+                        <label class='control-label col-md-2 col-md-offset-2' for='id_accomodation'>Accomodation</label>
+                        <div class='col-md-2'>
+                            <select class='form-control' id='id_accomodation'>
+                                <option>RV</option>
+                                <option>Tent</option>
+                                <option>Cabin/Lodging</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class='form-group'>
+                        <label class='control-label col-md-2 col-md-offset-2' for='id_title'>Name</label>
+                        <div class='col-md-8'>
+                            <div class='col-md-2'>
+                                <div class='form-group internal'>
+                                    <select class='form-control' id='id_title'>
+                                        <option>Mr</option>
+                                        <option>Ms</option>
+                                        <option>Mrs</option>
+                                        <option>Miss</option>
+                                        <option>Dr</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class='col-md-3 indent-small'>
+                                <div class='form-group internal'>
+                                    <input class='form-control' id='id_first_name' placeholder='First Name' type='text'>
+                                </div>
+                            </div>
+                            <div class='col-md-3 indent-small'>
+                                <div class='form-group internal'>
+                                    <input class='form-control' id='id_last_name' placeholder='Last Name' type='text'>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class='form-group'>
+                        <label class='control-label col-md-2 col-md-offset-2' for='id_adults'>Guests</label>
+                        <div class='col-md-8'>
+                            <div class='col-md-2'>
+                                <div class='form-group internal'>
+                                    <input class='form-control col-md-8' id='id_adults' placeholder='18+ years' type='number'>
+                                </div>
+                            </div>
+                            <div class='col-md-3 indent-small'>
+                                <div class='form-group internal'>
+                                    <input class='form-control' id='id_children' placeholder='2-17 years' type='number'>
+                                </div>
+                            </div>
+                            <div class='col-md-3 indent-small'>
+                                <div class='form-group internal'>
+                                    <input class='form-control' id='id_children_free' placeholder='&lt; 2 years' type='number'>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class='form-group'>
+                        <label class='control-label col-md-2 col-md-offset-2' for='id_email'>Contact</label>
+                        <div class='col-md-6'>
+                            <div class='form-group'>
+                                <div class='col-md-11'>
+                                    <input class='form-control' id='id_email' placeholder='E-mail' type='text'>
+                                </div>
+                            </div>
+                            <div class='form-group internal'>
+                                <div class='col-md-11'>
+                                    <input class='form-control' id='id_phone' placeholder='Phone: (xxx) - xxx xxxx' type='text'>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class='form-group'>
+                        <label class='control-label col-md-2 col-md-offset-2' for='id_checkin'>Checkin</label>
+                        <div class='col-md-8'>
+                            <div class='col-md-3'>
+                                <div class='form-group internal input-group'>
+                                    <input class='form-control datepicker' id='id_checkin'>
+                                    <span class='input-group-addon'>
+                                        <i class='glyphicon glyphicon-calendar'></i>
+                                    </span>
+                                </div>
+                            </div>
+                            <label class='control-label col-md-2' for='id_checkout'>Checkout</label>
+                            <div class='col-md-3'>
+                                <div class='form-group internal input-group'>
+                                    <input class='form-control datepicker' id='id_checkout'>
+                                    <span class='input-group-addon'>
+                                        <i class='glyphicon glyphicon-calendar'></i>
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class='form-group'>
+                        <label class='control-label col-md-2 col-md-offset-2' for='id_equipment'>Equipment type</label>
+                        <div class='col-md-8'>
+                            <div class='col-md-3'>
+                                <div class='form-group internal'>
+                                    <select class='form-control' id='id_equipment'>
+                                        <option>Travel trailer</option>
+                                        <option>Fifth wheel</option>
+                                        <option>RV/Motorhome</option>
+                                        <option>Tent trailer</option>
+                                        <option>Pickup camper</option>
+                                        <option>Camper van</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class='col-md-9'>
+                                <div class='form-group internal'>
+                                    <label class='control-label col-md-3' for='id_slide'>Slide-outs</label>
+                                    <div class='make-switch' data-off-label='NO' data-on-label='YES' id='id_slide_switch'>
+                                        <input id='id_slide' type='checkbox' value='chk_hydro'>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class='form-group'>
+                        <label class='control-label col-md-2 col-md-offset-2' for='id_service'>Required Service</label>
+                        <div class='col-md-8'>
+                            <select class='multiselect' id='id_service' multiple='multiple'>
+                                <option value='hydro'>Hydro</option>
+                                <option value='water'>Water</option>
+                                <option value='sewer'>Sewer</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class='form-group'>
+                        <label class='control-label col-md-2 col-md-offset-2' for='id_pets'>Pets</label>
+                        <div class='col-md-8'>
+                            <div class='make-switch' data-off-label='NO' data-on-label='YES' id='id_pets_switch'>
+                                <input id='id_pets' type='checkbox' value='chk_hydro'>
+                            </div>
+                        </div>
+                    </div>
+                    <div class='form-group'>
+                        <label class='control-label col-md-2 col-md-offset-2' for='id_comments'>Comments</label>
+                        <div class='col-md-6'>
+                            <textarea class='form-control' id='id_comments' placeholder='Additional comments' rows='3'></textarea>
+                        </div>
+                    </div>
+                    <div class='form-group'>
+                        <div class='col-md-offset-4 col-md-3'>
+                            <button class='btn-lg btn-primary' type='submit'>Save</button>
+                        </div>
+                        <div class='col-md-3'>
+                            <button class='btn-lg btn-danger' style='float:right' type='submit'>Cancel</button>
+                        </div>
+                    </div>
+                </form>
+
+            </div>
+        </div>
+
+        <div id="tab-4" class="tab-content">
+            <div class='container' style="width: 860px; height: 500px;padding-left:0px;">
+                <form class='form-horizontal' role='form'>
+                    <div class='form-group'>
+                        <label class='control-label col-md-2 col-md-offset-2' for='id_accomodation'>Accomodation</label>
+                        <div class='col-md-2'>
+                            <select class='form-control' id='id_accomodation'>
+                                <option>RV</option>
+                                <option>Tent</option>
+                                <option>Cabin/Lodging</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class='form-group'>
+                        <label class='control-label col-md-2 col-md-offset-2' for='id_title'>Name</label>
+                        <div class='col-md-8'>
+                            <div class='col-md-2'>
+                                <div class='form-group internal'>
+                                    <select class='form-control' id='id_title'>
+                                        <option>Mr</option>
+                                        <option>Ms</option>
+                                        <option>Mrs</option>
+                                        <option>Miss</option>
+                                        <option>Dr</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class='col-md-3 indent-small'>
+                                <div class='form-group internal'>
+                                    <input class='form-control' id='id_first_name' placeholder='First Name' type='text'>
+                                </div>
+                            </div>
+                            <div class='col-md-3 indent-small'>
+                                <div class='form-group internal'>
+                                    <input class='form-control' id='id_last_name' placeholder='Last Name' type='text'>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class='form-group'>
+                        <label class='control-label col-md-2 col-md-offset-2' for='id_adults'>Guests</label>
+                        <div class='col-md-8'>
+                            <div class='col-md-2'>
+                                <div class='form-group internal'>
+                                    <input class='form-control col-md-8' id='id_adults' placeholder='18+ years' type='number'>
+                                </div>
+                            </div>
+                            <div class='col-md-3 indent-small'>
+                                <div class='form-group internal'>
+                                    <input class='form-control' id='id_children' placeholder='2-17 years' type='number'>
+                                </div>
+                            </div>
+                            <div class='col-md-3 indent-small'>
+                                <div class='form-group internal'>
+                                    <input class='form-control' id='id_children_free' placeholder='&lt; 2 years' type='number'>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class='form-group'>
+                        <label class='control-label col-md-2 col-md-offset-2' for='id_email'>Contact</label>
+                        <div class='col-md-6'>
+                            <div class='form-group'>
+                                <div class='col-md-11'>
+                                    <input class='form-control' id='id_email' placeholder='E-mail' type='text'>
+                                </div>
+                            </div>
+                            <div class='form-group internal'>
+                                <div class='col-md-11'>
+                                    <input class='form-control' id='id_phone' placeholder='Phone: (xxx) - xxx xxxx' type='text'>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class='form-group'>
+                        <label class='control-label col-md-2 col-md-offset-2' for='id_checkin'>Checkin</label>
+                        <div class='col-md-8'>
+                            <div class='col-md-3'>
+                                <div class='form-group internal input-group'>
+                                    <input class='form-control datepicker' id='id_checkin'>
+                                    <span class='input-group-addon'>
+                                        <i class='glyphicon glyphicon-calendar'></i>
+                                    </span>
+                                </div>
+                            </div>
+                            <label class='control-label col-md-2' for='id_checkout'>Checkout</label>
+                            <div class='col-md-3'>
+                                <div class='form-group internal input-group'>
+                                    <input class='form-control datepicker' id='id_checkout'>
+                                    <span class='input-group-addon'>
+                                        <i class='glyphicon glyphicon-calendar'></i>
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class='form-group'>
+                        <label class='control-label col-md-2 col-md-offset-2' for='id_equipment'>Equipment type</label>
+                        <div class='col-md-8'>
+                            <div class='col-md-3'>
+                                <div class='form-group internal'>
+                                    <select class='form-control' id='id_equipment'>
+                                        <option>Travel trailer</option>
+                                        <option>Fifth wheel</option>
+                                        <option>RV/Motorhome</option>
+                                        <option>Tent trailer</option>
+                                        <option>Pickup camper</option>
+                                        <option>Camper van</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class='col-md-9'>
+                                <div class='form-group internal'>
+                                    <label class='control-label col-md-3' for='id_slide'>Slide-outs</label>
+                                    <div class='make-switch' data-off-label='NO' data-on-label='YES' id='id_slide_switch'>
+                                        <input id='id_slide' type='checkbox' value='chk_hydro'>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class='form-group'>
+                        <label class='control-label col-md-2 col-md-offset-2' for='id_service'>Required Service</label>
+                        <div class='col-md-8'>
+                            <select class='multiselect' id='id_service' multiple='multiple'>
+                                <option value='hydro'>Hydro</option>
+                                <option value='water'>Water</option>
+                                <option value='sewer'>Sewer</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class='form-group'>
+                        <label class='control-label col-md-2 col-md-offset-2' for='id_pets'>Pets</label>
+                        <div class='col-md-8'>
+                            <div class='make-switch' data-off-label='NO' data-on-label='YES' id='id_pets_switch'>
+                                <input id='id_pets' type='checkbox' value='chk_hydro'>
+                            </div>
+                        </div>
+                    </div>
+                    <div class='form-group'>
+                        <label class='control-label col-md-2 col-md-offset-2' for='id_comments'>Comments</label>
+                        <div class='col-md-6'>
+                            <textarea class='form-control' id='id_comments' placeholder='Additional comments' rows='3'></textarea>
+                        </div>
+                    </div>
+                    <div class='form-group'>
+                        <div class='col-md-offset-4 col-md-3'>
+                            <button class='btn-lg btn-primary' type='submit'>Save</button>
+                        </div>
+                        <div class='col-md-3'>
+                            <button class='btn-lg btn-danger' style='float:right' type='submit'>Cancel</button>
+                        </div>
+                    </div>
+                </form>
+
+            </div>
+        </div>
+
+        <div id="tab-5" class="tab-content">
+            <div class='container' style="width: 860px; height: 500px;padding-left:0px;">
+                <form class='form-horizontal' role='form'>
+                    <div class='form-group'>
+                        <label class='control-label col-md-2 col-md-offset-2' for='id_accomodation'>Accomodation</label>
+                        <div class='col-md-2'>
+                            <select class='form-control' id='id_accomodation'>
+                                <option>RV</option>
+                                <option>Tent</option>
+                                <option>Cabin/Lodging</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class='form-group'>
+                        <label class='control-label col-md-2 col-md-offset-2' for='id_title'>Name</label>
+                        <div class='col-md-8'>
+                            <div class='col-md-2'>
+                                <div class='form-group internal'>
+                                    <select class='form-control' id='id_title'>
+                                        <option>Mr</option>
+                                        <option>Ms</option>
+                                        <option>Mrs</option>
+                                        <option>Miss</option>
+                                        <option>Dr</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class='col-md-3 indent-small'>
+                                <div class='form-group internal'>
+                                    <input class='form-control' id='id_first_name' placeholder='First Name' type='text'>
+                                </div>
+                            </div>
+                            <div class='col-md-3 indent-small'>
+                                <div class='form-group internal'>
+                                    <input class='form-control' id='id_last_name' placeholder='Last Name' type='text'>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class='form-group'>
+                        <label class='control-label col-md-2 col-md-offset-2' for='id_adults'>Guests</label>
+                        <div class='col-md-8'>
+                            <div class='col-md-2'>
+                                <div class='form-group internal'>
+                                    <input class='form-control col-md-8' id='id_adults' placeholder='18+ years' type='number'>
+                                </div>
+                            </div>
+                            <div class='col-md-3 indent-small'>
+                                <div class='form-group internal'>
+                                    <input class='form-control' id='id_children' placeholder='2-17 years' type='number'>
+                                </div>
+                            </div>
+                            <div class='col-md-3 indent-small'>
+                                <div class='form-group internal'>
+                                    <input class='form-control' id='id_children_free' placeholder='&lt; 2 years' type='number'>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class='form-group'>
+                        <label class='control-label col-md-2 col-md-offset-2' for='id_email'>Contact</label>
+                        <div class='col-md-6'>
+                            <div class='form-group'>
+                                <div class='col-md-11'>
+                                    <input class='form-control' id='id_email' placeholder='E-mail' type='text'>
+                                </div>
+                            </div>
+                            <div class='form-group internal'>
+                                <div class='col-md-11'>
+                                    <input class='form-control' id='id_phone' placeholder='Phone: (xxx) - xxx xxxx' type='text'>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class='form-group'>
+                        <label class='control-label col-md-2 col-md-offset-2' for='id_checkin'>Checkin</label>
+                        <div class='col-md-8'>
+                            <div class='col-md-3'>
+                                <div class='form-group internal input-group'>
+                                    <input class='form-control datepicker' id='id_checkin'>
+                                    <span class='input-group-addon'>
+                                        <i class='glyphicon glyphicon-calendar'></i>
+                                    </span>
+                                </div>
+                            </div>
+                            <label class='control-label col-md-2' for='id_checkout'>Checkout</label>
+                            <div class='col-md-3'>
+                                <div class='form-group internal input-group'>
+                                    <input class='form-control datepicker' id='id_checkout'>
+                                    <span class='input-group-addon'>
+                                        <i class='glyphicon glyphicon-calendar'></i>
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class='form-group'>
+                        <label class='control-label col-md-2 col-md-offset-2' for='id_equipment'>Equipment type</label>
+                        <div class='col-md-8'>
+                            <div class='col-md-3'>
+                                <div class='form-group internal'>
+                                    <select class='form-control' id='id_equipment'>
+                                        <option>Travel trailer</option>
+                                        <option>Fifth wheel</option>
+                                        <option>RV/Motorhome</option>
+                                        <option>Tent trailer</option>
+                                        <option>Pickup camper</option>
+                                        <option>Camper van</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class='col-md-9'>
+                                <div class='form-group internal'>
+                                    <label class='control-label col-md-3' for='id_slide'>Slide-outs</label>
+                                    <div class='make-switch' data-off-label='NO' data-on-label='YES' id='id_slide_switch'>
+                                        <input id='id_slide' type='checkbox' value='chk_hydro'>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class='form-group'>
+                        <label class='control-label col-md-2 col-md-offset-2' for='id_service'>Required Service</label>
+                        <div class='col-md-8'>
+                            <select class='multiselect' id='id_service' multiple='multiple'>
+                                <option value='hydro'>Hydro</option>
+                                <option value='water'>Water</option>
+                                <option value='sewer'>Sewer</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class='form-group'>
+                        <label class='control-label col-md-2 col-md-offset-2' for='id_pets'>Pets</label>
+                        <div class='col-md-8'>
+                            <div class='make-switch' data-off-label='NO' data-on-label='YES' id='id_pets_switch'>
+                                <input id='id_pets' type='checkbox' value='chk_hydro'>
+                            </div>
+                        </div>
+                    </div>
+                    <div class='form-group'>
+                        <label class='control-label col-md-2 col-md-offset-2' for='id_comments'>Comments</label>
+                        <div class='col-md-6'>
+                            <textarea class='form-control' id='id_comments' placeholder='Additional comments' rows='3'></textarea>
+                        </div>
+                    </div>
+                    <div class='form-group'>
+                        <div class='col-md-offset-4 col-md-3'>
+                            <button class='btn-lg btn-primary' type='submit'>Save</button>
+                        </div>
+                        <div class='col-md-3'>
+                            <button class='btn-lg btn-danger' style='float:right' type='submit'>Cancel</button>
+                        </div>
+                    </div>
+                </form>
+
+            </div>
+        </div>
+
+    </div>
+</div>
+<script>
+    $(document).ready(function () {
+        $(".tabs-menu a").click(function (event) {
+            event.preventDefault();
+            $(this).parent().addClass("current");
+            $(this).parent().siblings().removeClass("current");
+            var tab = $(this).attr("href");
+            $(".tab-content").not(tab).css("display", "none");
+            $(tab).fadeIn();
+        });
+
+        $('.multiselect').multiselect();
+        $('.datepicker').datepicker();
+    });
+</script>

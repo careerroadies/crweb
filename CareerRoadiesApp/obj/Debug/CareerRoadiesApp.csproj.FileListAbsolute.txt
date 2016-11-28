@@ -1,0 +1,6 @@
+D:\CareerRoadiesApp\CareerRoadiesApp\CareerRoadiesApp\bin\CareerRoadiesApp.dll.config
+D:\CareerRoadiesApp\CareerRoadiesApp\CareerRoadiesApp\bin\CareerRoadiesApp.dll
+D:\CareerRoadiesApp\CareerRoadiesApp\CareerRoadiesApp\bin\CareerRoadiesApp.pdb
+D:\CareerRoadiesApp\CareerRoadiesApp\CareerRoadiesApp\obj\Debug\CareerRoadiesApp.dll
+D:\CareerRoadiesApp\CareerRoadiesApp\CareerRoadiesApp\obj\Debug\CareerRoadiesApp.pdb
+D:\CareerRoadiesApp\CareerRoadiesApp\CareerRoadiesApp\obj\Debug\CareerRoadiesApp.csprojResolveAssemblyReference.cache

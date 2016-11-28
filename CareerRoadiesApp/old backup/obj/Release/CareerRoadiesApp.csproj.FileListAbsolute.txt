@@ -1,0 +1,5 @@
+D:\CareerRoadiesApp\CareerRoadiesApp\CareerRoadiesApp\bin\CareerRoadiesApp.dll.config
+D:\CareerRoadiesApp\CareerRoadiesApp\CareerRoadiesApp\bin\CareerRoadiesApp.dll
+D:\CareerRoadiesApp\CareerRoadiesApp\CareerRoadiesApp\bin\CareerRoadiesApp.pdb
+D:\CareerRoadiesApp\CareerRoadiesApp\CareerRoadiesApp\obj\Release\CareerRoadiesApp.dll
+D:\CareerRoadiesApp\CareerRoadiesApp\CareerRoadiesApp\obj\Release\CareerRoadiesApp.pdb

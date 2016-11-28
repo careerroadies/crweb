@@ -1,0 +1,62 @@
+﻿<!DOCTYPE html>
+<html ng-app="crApp">
+<head>
+    <title>Career Roadies | Index</title>
+    <!--<base href="/">-->
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <meta content="" name="description" />
+    <meta content="" name="author" />
+
+    <link rel="stylesheet" href="css/style.css" type="text/css">
+    <link rel="stylesheet" href="css/font-awesome.min.css" type="text/css">
+    <link rel="stylesheet" href="assets/css/bootstrap.min.css" />
+   
+</head>
+<body class="fixed-top">
+
+    <!-- - - - - - - - - - - - - - Header - - - - - - - - - - - - - - - - -->   
+    <div ng-include="'components/shared/views/header.html'"></div>
+    <!-- - - - - - - - - - - - - - end Header - - - - - - - - - - - - - - - - -->
+
+    <div ng-view></div>
+    <!-- - - - - - - - - - - - - - - Footer - - - - - - - - - - - - - - - - -->
+    <div ng-include="'components/shared/views/footer.html'"></div>
+    <!-- - - - - - - - - - - - - end Footer - - - - - - - - - - - - - -->
+  
+    <script src="./js/jquery-1.8.3.min.js"></script>
+    <script src="Scripts/jquery.leanModal.min.js"></script>
+    <!-- - - - - - - - - - - - - - - end - - - - - - - - - - - - - - - - -->
+    
+
+    <!-- - - - - - - - - - - - - - - angularjs files - - - - - - - - - - - - - - - - -->
+    <script src="Scripts/angular.min.js"></script>
+    <script src="Scripts/angular-sanitize.min.js"></script>
+    <script src="Scripts/angular-messages.js"></script>
+    <script src="Scripts/angular-route.min.js"></script>
+    
+
+    <!-- - - - - - - - - - - - - - - controller and services js files - - - - - - - - - - - - - - - - -->
+    <script src="app.module.js"></script>
+    <script src="app.routes.js"></script>
+    <script src="app.controller.js"></script>
+    <script src="configs/config.js"></script>
+    <script src="components/shared/services/ajax-service.js"></script>
+    <script src="components/shared/controllers/home.ctrl.js"></script>
+    <script src="components/shared/directive/slider.directive.js"></script>
+    <script src="components/auth/controllers/register.ctrl.js"></script>
+    <script src="components/auth/controllers/login.ctrl.js"></script>
+    <script src="components/auth/services/register.service.js"></script>
+    <script src="components/shared/services/alerts.service.js"></script>
+    
+    <script src="components/auth/controllers/profile.ctrl.js"></script>
+    <script src="components/auth/services/profile.service.js"></script>
+    <script src="components/shared/services/dropdown.service.js"></script>
+    <script src="components/shared/services/file.upload.service.js"></script>
+    <script src="components/shared/directive/file.upload.directive.js"></script>
+    <script src="components/shared/directive/header.directive.js"></script>
+    <script src="components/shared/directive/profile.directive.js"></script>
+
+    <!-- - - - - - - - - - - - - - - end - - - - - - - - - - - - - - - - -->
+</body>
+</html>

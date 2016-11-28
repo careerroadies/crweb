@@ -1,0 +1,76 @@
+﻿<script type="text/javascript">
+    $(document).ready(function () {
+        var placeholder = null;
+        $('input[type=text]').focus(function () {
+            placeholder = $(this).attr("placeholder");
+            $(this).attr("placeholder", "");
+        });
+        $('input[type=text]').blur(function () {
+            $(this).attr("placeholder", placeholder);
+        });
+    });
+</script>
+<form name="myForm" novalidate class="css-form">
+    <div class="main" ng-controller="profileController" ng-init="initializeController();">
+        <div class="two">
+            <div class="register">
+                <h3>{{lable}}</h3>
+                <h3>UserID - : {{userid}}</h3>
+
+                <h2>{{message}}</h2>
+                <div class="form-group">
+                    <label>First Name:</label>
+                    <input type="text" id="txtFirstName" class="form-control" accept="" spellcheck="false" name="firstname"
+                           placeholder="Please enter first name" ng-model="firstname" required />
+                </div>
+                <div class="form-group">
+                    <label>Last Name:</label>
+                    <input type="text" id="txtLastName" class="form-control" accept="" spellcheck="false" name="lastname"
+                           placeholder="Please enter lasr name" ng-model="lastname" required />
+                </div>
+                <div class="form-group">
+                    <label for="txtDOB">DOB:</label>
+                    <input type="date" id="txtDOB" spellcheck="false" placeholder="Please enter Date of Birth" class="textbox" ng-model="dob" />
+                </div>
+                <div class="form-group">
+                    <label for="txtMobile">Mobile Number:</label>
+                    <input type="number" id="txtMobile" spellcheck="false" placeholder="Please Enter Contact Number" ng-model="contactno" />
+                </div>
+                <div class="form-group">
+                    <label>Country:</label>
+                    <select id="ddlCountry" name="country" ng-model="country" ng-options="obj.countryid as obj.name for obj in countries" ng-change="getCountryState(country)">
+                        <option value="">-- Choose Country--</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label>state:</label>
+                    <select id="ddlState" name="state" ng-model="state" ng-disabled="!childSelectIsDisabled" ng-options="x.stateid as x.name for x in states" ng-change="getStateCities(state)">
+                        <option value="">-- Choose State --</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label>City:</label>
+                    <select id="ddlCity" name="city" ng-model="city" ng-disabled="!state"  ng-options="c.cityid as c.name for c in cities">
+                        <option value="">-- Choose City --</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label>Address:</label>
+                    <textarea id="txtAddress" class="form-control" spellcheck="false" name="permanentaddress"
+                              placeholder="Please enter lasr name" ng-model="permanentaddress" required></textarea>
+                </div>
+
+                <div class="form-group">
+                    <label>Upload Image:</label>
+                    <input type="file" input-file-control="uploadFile" />
+                    <img ng-src="{{image_sorce}}" width="{{width}}" height="{{height}}" />
+                </div>
+
+                <div style="padding-left:200px;">
+                    <input type="submit" value="Save" id="btnSubmit" class="button" ng-click="SaveProfile()" />
+                </div>
+            </div>
+        </div>
+    </div>
+</form>
