@@ -4,3 +4,9 @@ D:\CareerRoadiesApp\CareerRoadiesApp\CareerRoadiesApp\bin\CareerRoadiesApp.pdb
 D:\CareerRoadiesApp\CareerRoadiesApp\CareerRoadiesApp\obj\Debug\CareerRoadiesApp.dll
 D:\CareerRoadiesApp\CareerRoadiesApp\CareerRoadiesApp\obj\Debug\CareerRoadiesApp.pdb
 D:\CareerRoadiesApp\CareerRoadiesApp\CareerRoadiesApp\obj\Debug\CareerRoadiesApp.csprojResolveAssemblyReference.cache
+D:\crweb\CareerRoadiesApp\bin\CareerRoadiesApp.dll.config
+D:\crweb\CareerRoadiesApp\bin\CareerRoadiesApp.dll
+D:\crweb\CareerRoadiesApp\bin\CareerRoadiesApp.pdb
+D:\crweb\CareerRoadiesApp\obj\Debug\CareerRoadiesApp.csprojResolveAssemblyReference.cache
+D:\crweb\CareerRoadiesApp\obj\Debug\CareerRoadiesApp.dll
+D:\crweb\CareerRoadiesApp\obj\Debug\CareerRoadiesApp.pdb
