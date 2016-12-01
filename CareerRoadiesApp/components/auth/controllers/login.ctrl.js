@@ -16,12 +16,13 @@ function loginController($scope, $rootScope, registerService, $location, $window
     }
 
     $scope.LoginComplete = function (response, status) {
-
-        $scope.userid = response.userid;
-        window.location = "/applicationMaster.html#/Dashboard";
+        $scope.userId = response.user_id;
+        //window.location = "/applicationMaster.html#/Dashboard";
+        //window.location = "/applicationMaster.html#/BasicProfile";
+        //window.location = "/applicationMaster.html#/Profile";
         $scope.enablelogin = true;
-        //var url = '#/Profile/' + $scope.userid;
-        //$window.location.href = url;
+        var url = '/applicationMaster.html#/Profile/' + $scope.userId;
+        $window.location.href = url;
     }
 
     $scope.Loginerror = function (response) {

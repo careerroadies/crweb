@@ -1,22 +1,59 @@
 ﻿// This controller is used for saving the basic profile details for user
 
-crApp.controller("profileController", ['$scope','profileService', '$routeParams', 'fillComboService', '$filter', 'fileUploadService', profileController]);
+crApp.controller("profileController", ['$scope', 'profileService', '$routeParams', 'fillComboService', '$filter', 'fileUploadService', 'alertsService', '$rootScope', profileController]);
 
-function profileController($scope, profileService, $routeParams, fillComboService, $filter, fileUploadService) {
+function profileController($scope, profileService, $routeParams, fillComboService, $filter, fileUploadService, alertsService, $rootScope) {
 
-    this.userid = $routeParams.userid;
+    this.profileStatus = [
+    {
+        id: 0,
+        name: 'Please Select'
+    },
+    {
+        id: 1,
+        name: 'Active'
+    },
+    {
+        id: 2,
+        name: 'In-Active'
+    }
+    ];
+    $rootScope.closeAlert = alertsService.closeAlert;
+    $rootScope.alerts = [];
+
+    this.UserId = $routeParams.userId;
     var formdata = new FormData();
-    this.profilepicture = "";
+    this.ProfilePicture = "";
+    
     this.initializeController = function () {
         this.lable = "Create Profile";
         this.message = "Fill the Profile Details.";
-        
-        this.userid = ($routeParams.userid || "");
+
         fillComboService.fillCombo('GetCountry', null, this.fillComboComplete, this.fillComboError);
         this.childSelectIsDisabled = false;
+       
     }
+    
 
-    // For Upload Image for profile.
+    $scope.initControlles = function() {
+        this.FirstName = "";
+        this.LastName = "";
+        this.Gender = "0";
+        this.Dob = "";
+        this.AlternateEmail = "";
+        this.PrimaryEmail = "";
+        this.MobileNumber = "";
+        this.UserId = "";
+        this.ProfileId = "";
+        this.Status = "1";
+        this.ProfilePicture = "";
+        this.ProfileText = "";
+        this.stype = "A";
+
+    }
+   
+
+    // For Upload Image for profile.    
     $scope.uploadFile = function (event) {
         $scope.width = "100px";
         $scope.height = "100px";
@@ -29,14 +66,14 @@ function profileController($scope, profileService, $routeParams, fillComboServic
         // Read file and display as preview.
         var reader = new FileReader();
         reader.onload = function (simage) {
-            
+
             $scope.image_sorce = simage.target.result;
             $scope.$apply();
         };
 
         console.log(files[0].name);
         reader.readAsDataURL(event.target.files[0]);
-        $scope.profilepicture = files[0].name;
+        $scope.ProfilePicture = files[0].name;
     };
 
     this.getCountryState = function (country) {
@@ -87,7 +124,17 @@ function profileController($scope, profileService, $routeParams, fillComboServic
     }
 
     this.errorOnProfile = function (response, status) {
-        this.error = "error in profile."
+        alertsService.RenderErrorMessage(response.ReturnMessage);
+        $scope.clearValidationErrors();
+        alertsService.SetValidationErrors($scope, response.ValidationErrors);
+    }
+    $scope.clearValidationErrors = function () {
+
+        $scope.FirstNameInputError = false;
+        $scope.LastNameInputError = false;
+        $scope.PrimaryEmailInputError = false;
+        $scope.AlternateEmailInputError = false;
+        $scope.GenderInputError = false;
     }
 
     this.SaveBasicDetails = function () {
@@ -97,23 +144,21 @@ function profileController($scope, profileService, $routeParams, fillComboServic
     }
 
     this.newProfileObj = function () {
+        $scope.initControlles();
         var puser = new Object();
-        puser.userid = 305  //this.userid;
-        puser.firstname = this.firstname;
-        puser.lastname = this.lastname;
-        puser.middlename = "";
-        puser.fathername = this.fathername;
-        puser.mothername = this.mothername;
-        puser.dob = this.dob;
-        puser.country = "India"//this.country;
-        puser.state = this.state;
-        puser.city = this.city;
-        puser.location = this.location;
-        puser.contactno = this.contactno;
-        puser.profilepicture = this.profilepicture;
-        console.log(this.profilepicture);
-        puser.profiletext = this.profiletext;
-        puser.bloodgroup = "";//this.bloodgroup;
+        puser.FirstName = this.FirstName;
+        puser.LastName = this.LastName;
+        puser.Gender = this.Gender;
+        puser.Dob = this.Dob;
+        puser.AlternateEmail = this.AlternateEmail;
+        puser.PrimaryEmail = this.PrimaryEmail;
+        puser.MobileNumber = this.MobileNumber;
+        puser.UserId = this.UserId;
+        puser.MaritalStatus = this.MaritalStatus;
+        puser.ProfileId = this.ProfileId;
+        puser.Status = this.Status;
+        puser.ProfilePicture = this.ProfilePicture;
+        puser.ProfileText = this.ProfileText;
         puser.stype = "A";
         return puser;
     }
