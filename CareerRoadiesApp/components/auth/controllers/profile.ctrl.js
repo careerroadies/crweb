@@ -21,6 +21,8 @@ function profileController($scope, profileService, $routeParams, fillComboServic
     $rootScope.closeAlert = alertsService.closeAlert;
     $rootScope.alerts = [];
 
+   
+
     this.UserId = $routeParams.userId;
     var formdata = new FormData();
     this.ProfilePicture = "";
@@ -29,9 +31,11 @@ function profileController($scope, profileService, $routeParams, fillComboServic
         this.lable = "Create Profile";
         this.message = "Fill the Profile Details.";
 
-        fillComboService.fillCombo('GetCountry', null, this.fillComboComplete, this.fillComboError);
-        this.childSelectIsDisabled = false;
-       
+        //fillComboService.fillCombo('GetCountry', null, this.fillComboComplete, this.fillComboError);
+        //this.childSelectIsDisabled = false;
+
+        fillComboService.fillCombo('GetState', null, this.fillStateComboComplete, this.fillComboError);
+        
     }
     
 
@@ -76,7 +80,7 @@ function profileController($scope, profileService, $routeParams, fillComboServic
         $scope.ProfilePicture = files[0].name;
     };
 
-    this.getCountryState = function (country) {
+  /*  this.getCountryState = function (country) {
 
         if (country) {
 
@@ -88,7 +92,7 @@ function profileController($scope, profileService, $routeParams, fillComboServic
             this.states = null;
         }
 
-    };
+    };*/
 
     this.getStateCities = function (state) {
         if (state) {
@@ -101,12 +105,14 @@ function profileController($scope, profileService, $routeParams, fillComboServic
         }
     };
 
-    this.fillComboComplete = function (response, status) {
-        this.countries = response;
-    }
+    //this.fillComboComplete = function (response, status) {
+    //    this.countries = response;
+    //}
 
+    $scope.states = "";
     this.fillStateComboComplete = function (response, status) {
-        this.states = response;
+        $scope.states = response;
+        console.log($scope.states);
     }
 
     this.fillCityComboComplete = function (response, status) {

@@ -1,5 +1,5 @@
 ﻿
-<div id="tabs-container" ng-controller="profileController as p">
+<div id="tabs-container" ng-controller="profileController as p" ng-init="p.initializeController()">
     <div>
         Welcome Mrs: {{p.userid}}
     </div>
@@ -56,19 +56,19 @@
                         </div>
                     </div>
                     <div class="form-group">
-                        <div class='col-md-2 indent-small'>
+                        <!--<div class='col-md-2 indent-small'>
                             <div class='form-group internal'>
                                 <label class='control-label col-md-2 col-md-offset-2' for='id_checkin'>Country</label>
                                 <select id="ddlCountry" name="country" ng-model="country" ng-options="obj.countryid as obj.name for obj in countries" ng-change="getCountryState(country)">
                                     <option value="">-- Choose Country--</option>
                                 </select>
                             </div>
-                        </div>
+                        </div>-->
                         <div class='col-md-2 indent-small'>
                             <div class='form-group internal'>
                                 <label class='control-label col-md-2 col-md-offset-2' for='id_checkin'>State</label>
-                                <select id="ddlState" name="state" ng-model="state" ng-disabled="!childSelectIsDisabled"
-                                        ng-options="x.stateid as x.name for x in states" ng-change="getStateCities(state)">
+                                <select id="ddlState" name="state" ng-model="state"
+                                        ng-options="x.stateid as x.name for x in states" ng-change="p.getStateCities(state)">
                                     <option value="">-- Choose State --</option>
                                 </select>
                             </div>
@@ -76,8 +76,8 @@
 
                         <div class='col-md-2 indent-small'>
                             <div class='form-group internal'>
-                                <label class='control-label col-md-2 col-md-offset-2' for='id_checkin'>State</label>
-                                <select id="ddlCity" name="city" ng-model="city" ng-disabled="!state" ng-options="c.cityid as c.name for c in cities">
+                                <label class='control-label col-md-2 col-md-offset-2' for='id_checkin'>city</label>
+                                <select id="ddlCity" name="city" ng-model="city" ng-disabled="!state" ng-options="c.cityid as c.name for c in p.cities">
                                     <option value="">-- Choose City --</option>
                                 </select>
                             </div>
