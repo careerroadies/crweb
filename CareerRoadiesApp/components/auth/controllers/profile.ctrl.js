@@ -4,7 +4,7 @@ crApp.controller("profileController", ['$scope', 'profileService', '$routeParams
 
 function profileController($scope, profileService, $routeParams, fillComboService, $filter, fileUploadService, alertsService, $rootScope) {
 
-    this.profileStatus = [
+    $scope.profileStatus = [
     {
         id: 0,
         name: 'Please Select'
@@ -23,36 +23,39 @@ function profileController($scope, profileService, $routeParams, fillComboServic
 
    
 
-    this.UserId = $routeParams.userId;
+    $scope.UserId = $routeParams.userId;
     var formdata = new FormData();
-    this.ProfilePicture = "";
+    $scope.ProfilePicture = "";
     
-    this.initializeController = function () {
-        this.lable = "Create Profile";
-        this.message = "Fill the Profile Details.";
+    $scope.initializeController = function () {
+        $scope.lable = "Create Profile";
+        $scope.message = "Fill the Profile Details.";
 
-        //fillComboService.fillCombo('GetCountry', null, this.fillComboComplete, this.fillComboError);
-        //this.childSelectIsDisabled = false;
+        //fillComboService.fillCombo('GetCountry', null, $scope.fillComboComplete, $scope.fillComboError);
+        //$scope.childSelectIsDisabled = false;
 
-        fillComboService.fillCombo('GetState', null, this.fillStateComboComplete, this.fillComboError);
+        fillComboService.fillCombo('GetState', null, $scope.fillStateComboComplete, $scope.fillComboError);
         
     }
     
 
     $scope.initControlles = function() {
-        this.FirstName = "";
-        this.LastName = "";
-        this.Gender = "0";
-        this.Dob = "";
-        this.AlternateEmail = "";
-        this.PrimaryEmail = "";
-        this.MobileNumber = "";
-        this.UserId = "";
-        this.ProfileId = "";
-        this.Status = "1";
-        this.ProfilePicture = "";
-        this.ProfileText = "";
-        this.stype = "A";
+        $scope.FirstName = "";
+        $scope.LastName = "";
+        $scope.Gender = "0";
+        $scope.Dob = "";
+        $scope.AlternateEmail = "";
+        $scope.PrimaryEmail = "";
+        $scope.MobileNumber = "";
+        $scope.UserId = "";
+        $scope.ProfileId = "";
+        $scope.Status = "1";
+        $scope.ProfilePicture = "";
+        $scope.ProfileText = "";
+        $scope.stype = "A";
+        $scope.city = "";
+        $scope.state = "";
+        $scope.location = "";
 
     }
    
@@ -80,56 +83,56 @@ function profileController($scope, profileService, $routeParams, fillComboServic
         $scope.ProfilePicture = files[0].name;
     };
 
-  /*  this.getCountryState = function (country) {
+  /*  $scope.getCountryState = function (country) {
 
         if (country) {
 
-            ($filter('filter')(fillComboService.fillCombo('GetState', country, this.fillStateComboComplete, this.fillComboError)));
-            this.childSelectIsDisabled = true;
+            ($filter('filter')(fillComboService.fillCombo('GetState', country, $scope.fillStateComboComplete, $scope.fillComboError)));
+            $scope.childSelectIsDisabled = true;
         }
         else {
-            this.childSelectIsDisabled = false;
-            this.states = null;
+            $scope.childSelectIsDisabled = false;
+            $scope.states = null;
         }
 
     };*/
 
-    this.getStateCities = function (state) {
+    $scope.getStateCities = function (state) {
         if (state) {
-            ($filter('filter')(fillComboService.fillCombo('GetCity', state, this.fillCityComboComplete, this.fillComboError)));
-            this.childSelectIsDisabled = true;
+            ($filter('filter')(fillComboService.fillCombo('GetCity', state, $scope.fillCityComboComplete, $scope.fillComboError)));
+            $scope.childSelectIsDisabled = true;
         }
         else {
-            this.cities = null;
-            this.childSelectIsDisabled = false;
+            $scope.cities = null;
+            $scope.childSelectIsDisabled = false;
         }
     };
 
-    //this.fillComboComplete = function (response, status) {
-    //    this.countries = response;
+    //$scope.fillComboComplete = function (response, status) {
+    //    $scope.countries = response;
     //}
 
     $scope.states = "";
-    this.fillStateComboComplete = function (response, status) {
+    $scope.fillStateComboComplete = function (response, status) {
         $scope.states = response;
         console.log($scope.states);
     }
 
-    this.fillCityComboComplete = function (response, status) {
-        this.cities = response;
+    $scope.fillCityComboComplete = function (response, status) {
+        $scope.cities = response;
     }
 
-    this.fillComboError = function (response, status) {
-        this.error = "error in fill combo";
-        console.log(this.error);
+    $scope.fillComboError = function (response, status) {
+        $scope.error = "error in fill combo";
+        console.log($scope.error);
     }
 
-    this.saveProfileComplete = function (response, status) {
-        this.profileid = response.profileid;
-        console.log(this.profileid);
+    $scope.saveProfileComplete = function (response, status) {
+        $scope.profileid = response.profileid;
+        console.log($scope.profileid);
     }
 
-    this.errorOnProfile = function (response, status) {
+    $scope.errorOnProfile = function (response, status) {
         alertsService.RenderErrorMessage(response.ReturnMessage);
         $scope.clearValidationErrors();
         alertsService.SetValidationErrors($scope, response.ValidationErrors);
@@ -143,33 +146,38 @@ function profileController($scope, profileService, $routeParams, fillComboServic
         $scope.GenderInputError = false;
     }
 
-    this.SaveBasicDetails = function () {
-        var objProfile = this.newProfileObj();
-        profileService.saveProfile(objProfile, this.saveProfileComplete, this.errorOnProfile);
-        this.UploadImage();
+    $scope.SaveBasicDetails = function () {
+        var objProfile = $scope.newProfileObj();
+        //profileService.saveProfile(objProfile, $scope.saveProfileComplete, $scope.errorOnProfile);
+        //$scope.UploadImage();
     }
 
-    this.newProfileObj = function () {
+    $scope.newProfileObj = function () {
         $scope.initControlles();
+        alert($scope.city);
+        alert($scope.state);
         var puser = new Object();
-        puser.FirstName = this.FirstName;
-        puser.LastName = this.LastName;
-        puser.Gender = this.Gender;
-        puser.Dob = this.Dob;
-        puser.AlternateEmail = this.AlternateEmail;
-        puser.PrimaryEmail = this.PrimaryEmail;
-        puser.MobileNumber = this.MobileNumber;
-        puser.UserId = this.UserId;
-        puser.MaritalStatus = this.MaritalStatus;
-        puser.ProfileId = this.ProfileId;
-        puser.Status = this.Status;
-        puser.ProfilePicture = this.ProfilePicture;
-        puser.ProfileText = this.ProfileText;
+        puser.FirstName = $scope.FirstName;
+        puser.LastName = $scope.LastName;
+        puser.Gender = $scope.Gender;
+        puser.Dob = $scope.Dob;
+        puser.AlternateEmail = $scope.AlternateEmail;
+        puser.PrimaryEmail = $scope.PrimaryEmail;
+        puser.MobileNumber = $scope.MobileNumber;
+        puser.UserId = $scope.UserId;
+        puser.MaritalStatus = $scope.MaritalStatus;
+        puser.ProfileId = $scope.ProfileId;
+        puser.Status = $scope.Status;
+        puser.ProfilePicture = $scope.ProfilePicture;
+        puser.ProfileText = $scope.ProfileText;
+        puser.city = $scope.city;
+        puser.state = $scope.state;
+        puser.location = $scope.location;
         puser.stype = "A";
         return puser;
     }
 
-    this.UploadImage = function () {
+    $scope.UploadImage = function () {
         var uploadUrl = api_url + "/FileUpload";
         fileUploadService.uploadFiles(formdata, uploadUrl);
     }
