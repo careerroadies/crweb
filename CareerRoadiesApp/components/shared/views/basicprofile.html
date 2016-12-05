@@ -1,7 +1,7 @@
 ﻿
-<div id="tabs-container" ng-controller="profileController as p" ng-init="p.initializeController()">
+<div id="tabs-container" ng-controller="profileController" ng-init="initializeController()">
     <div>
-        Welcome Mrs: {{p.userid}}
+        Welcome Mrs: {{userid}}
     </div>
     <ul class="tabs-menu" style="margin: 0px;">
         <li class="current"><a href="#tab-1">Basic Details</a></li>
@@ -23,14 +23,14 @@
                             <div class='col-md-3 indent-small'>
                                 <div class='form-group internal'>
                                     <label class='control-label col-md-2 col-md-offset-2' for='id_title'>First Name</label>
-                                    <input class='form-control' id='id_first_name' placeholder='First Name' type='text' ng-model="p.FirstName"
+                                    <input class='form-control' id='id_first_name' placeholder='First Name' type='text' ng-model="FirstName"
                                            ng-class="{'validation-error': FirstNameInputError}">
                                 </div>
                             </div>
                             <div class='col-md-3 indent-small'>
                                 <div class='form-group internal'>
                                     <label class='control-label col-md-2 col-md-offset-2' for='id_title'>Last Name</label>
-                                    <input class='form-control' id='id_last_name' placeholder='Last Name' type='text' ng-model="p.LastName"
+                                    <input class='form-control' id='id_last_name' placeholder='Last Name' type='text' ng-model="LastName"
                                            ng-class="{'validation-error': LastNameInputError}">
                                 </div>
                             </div>
@@ -41,7 +41,7 @@
                             <div class='col-md-3'>
                                 <label class='control-label col-md-2 col-md-offset-2' for='id_checkin'>DOB</label>
                                 <div class='form-group internal input-group'>
-                                    <input type="date" id="id_dob" name="input" ng-model="p.Dob"
+                                    <input type="date" id="id_dob" name="input" ng-model="Dob"
                                            placeholder="yyyy-MM-dd" min="2013-01-01" max="2013-12-31" />
                                 </div>
                             </div>
@@ -51,7 +51,7 @@
                         <div class='col-md-2 indent-small'>
                             <div class='form-group internal'>
                                 <label class='control-label col-md-2 col-md-offset-2' for='id_checkin'>Location</label>
-                                <input class='form-control' id='id_state_name' autocomplete="off" placeholder='State' type='text' ng-model="p.location">
+                                <input class='form-control' id='id_state_name' autocomplete="off" placeholder='State' type='text' ng-model="location">
                             </div>
                         </div>
                     </div>
@@ -68,7 +68,7 @@
                             <div class='form-group internal'>
                                 <label class='control-label col-md-2 col-md-offset-2' for='id_checkin'>State</label>
                                 <select id="ddlState" name="state" ng-model="state"
-                                        ng-options="x.stateid as x.name for x in states" ng-change="p.getStateCities(state)">
+                                        ng-options="x.stateid as x.name for x in states" ng-change="getStateCities(state)">
                                     <option value="">-- Choose State --</option>
                                 </select>
                             </div>
@@ -77,7 +77,7 @@
                         <div class='col-md-2 indent-small'>
                             <div class='form-group internal'>
                                 <label class='control-label col-md-2 col-md-offset-2' for='id_checkin'>city</label>
-                                <select id="ddlCity" name="city" ng-model="city" ng-disabled="!state" ng-options="c.cityid as c.name for c in p.cities">
+                                <select id="ddlCity" name="city" ng-model="city" ng-disabled="!state" ng-options="c.cityid as c.name for c in cities">
                                     <option value="">-- Choose City --</option>
                                 </select>
                             </div>
@@ -87,7 +87,7 @@
                         <label class='control-label col-md-2 col-md-offset-2' for='id_checkin'>Mobile No</label>
                         <div class='col-md-2 indent-small'>
                             <div class='form-group internal'>
-                                <input class='form-control' id='id_MobileNumber_name' placeholder='Mobile Number' type='number' ng-model="p.MobileNumber">
+                                <input class='form-control' id='id_MobileNumber_name' placeholder='Mobile Number' type='number' ng-model="MobileNumber">
                             </div>
                         </div>
                     </div>
@@ -97,14 +97,14 @@
                         <div class='col-md-8'>
                             <div class='col-md-3 indent-small'>
                                 <div class='form-group internal'>
-                                    <input class='form-control' id='id_first_name' placeholder='Primary Email' type='text' ng-model="p.PrimaryEmail"
+                                    <input class='form-control' id='id_first_name' placeholder='Primary Email' type='text' ng-model="PrimaryEmail"
                                            ng-class="{'validation-error': PrimaryEmailInputError}">
                                 </div>
                             </div>
                             <div class='col-md-3 indent-small'>
                                 <div class='form-group internal'>
                                     <input class='form-control' id='id_last_name' placeholder='AlternateEmail' type='text'
-                                           ng-model="p.AlternateEmail" ng-class="{'validation-error': AlternateEmailInputError}">
+                                           ng-model="AlternateEmail" ng-class="{'validation-error': AlternateEmailInputError}">
                                 </div>
                             </div>
                         </div>
@@ -114,7 +114,7 @@
                         <div class='col-md-8'>
                             <div class='col-md-3'>
                                 <div class='form-group internal'>
-                                    <select class='form-control' id='id_marital_status' ng-model="p.MaritalStatus">
+                                    <select class='form-control' id='id_marital_status' ng-model="MaritalStatus">
                                         <option value="0">Please Select</option>
                                         <option value="1">Unmarried</option>
                                         <option value="2">Married</option>
@@ -128,7 +128,7 @@
                         <div class='col-md-8'>
                             <div class='col-md-3'>
                                 <div class='form-group internal'>
-                                    <select class='form-control' id='id_marital_status' ng-model="p.Gender"
+                                    <select class='form-control' id='id_marital_status' ng-model="Gender"
                                             ng-class="{'validation-error': GenderInputError}">
                                         <option value="0">Male</option>
                                         <option value="1">Female</option>
@@ -148,7 +148,7 @@
                     <div class='form-group'>
                         <label class='control-label col-md-2 col-md-offset-2' for='id_comments'>Write brief</label>
                         <div class='col-md-6'>
-                            <textarea class='form-control' id='id_profile_text' placeholder='Write about your self.....' rows='3' ng-model="p.ProfileText"></textarea>
+                            <textarea class='form-control' id='id_profile_text' placeholder='Write about your self.....' rows='3' ng-model="ProfileText"></textarea>
                         </div>
                     </div>
                     <div class='form-group'>
@@ -156,15 +156,15 @@
                         <div class='col-md-8'>
                             <div class='col-md-3'>
                                 <div class='form-group internal'>
-                                    <select class='form-control' id='id_status' ng-model="p.Status"
-                                            ng-options="s.id as s.name for s in  p.profileStatus track by s.id"></select>
+                                    <select class='form-control' id='id_status' ng-model="Status"
+                                            ng-options="s.id as s.name for s in  profileStatus track by s.id"></select>
                                 </div>
                             </div>
                         </div>
                     </div>
                     <div class='form-group'>
                         <div class='col-md-offset-4 col-md-3'>
-                            <button class='btn-lg btn-primary' type='submit' ng-click="p.SaveBasicDetails();">Save</button>
+                            <button class='btn-lg btn-primary' type='submit' ng-click="SaveBasicDetails();">Save</button>
                         </div>
                         <div class='col-md-3'>
                             <button class='btn-lg btn-danger' style='float:right' type='submit'>Cancel</button>

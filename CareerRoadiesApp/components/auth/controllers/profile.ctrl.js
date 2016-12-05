@@ -148,14 +148,15 @@ function profileController($scope, profileService, $routeParams, fillComboServic
 
     $scope.SaveBasicDetails = function () {
         var objProfile = $scope.newProfileObj();
-        //profileService.saveProfile(objProfile, $scope.saveProfileComplete, $scope.errorOnProfile);
-        //$scope.UploadImage();
+        profileService.saveProfile(objProfile, $scope.saveProfileComplete, $scope.errorOnProfile);
+        $scope.UploadImage();
     }
 
     $scope.newProfileObj = function () {
-        $scope.initControlles();
-        alert($scope.city);
-        alert($scope.state);
+        
+
+       // $scope.initControlles();
+      
         var puser = new Object();
         puser.FirstName = $scope.FirstName;
         puser.LastName = $scope.LastName;
