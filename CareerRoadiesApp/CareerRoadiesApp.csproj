@@ -2627,6 +2627,7 @@
     <Content Include="tes1.html" />
     <Content Include="UploadImages\Deepak.JPG" />
     <Content Include="UploadImages\pankaj.jpg" />
+    <Content Include="UploadImages\Tulips.jpg" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
