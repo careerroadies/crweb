@@ -14,5 +14,5 @@ function profileService(ajaxService)
     {
         api__ctrl_url = api_url + "profile/viewprofile";
         ajaxService.ajaxGetWithParam(api__ctrl_url, data, successFunction, errorFunction);
-    }
+    }   
 }

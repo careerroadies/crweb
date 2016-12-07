@@ -37,7 +37,19 @@
                     </td>
                 </tr>
             </table>
+        </div>
 
+        <div>
+            <div>
+                <input type="text" ng-model="location" /> <select id="ddlState" name="state" ng-model="state"
+                                                                  ng-options="x.stateid as x.name for x in states" ng-change="getStateCities(state)">
+                    <option value="">-- Choose State --</option>
+                </select>
+                <select id="ddlCity" name="city" ng-model="city" ng-disabled="!state" ng-options="c.cityid as c.name for c in cities">
+                    <option value="">-- Choose City --</option>
+                </select>
+                <button ng-click="showUsers()">GO</button>
+            </div>
         </div>
     </div>
     <modal-dialog show='modalShown' profile-id='profileId' width='750px' height='60%'>

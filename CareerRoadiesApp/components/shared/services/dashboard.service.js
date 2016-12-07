@@ -2,9 +2,9 @@
 
 function dashboardService(ajaxService)
 {
-    var api__ctrl_url = api_url + "common/GetProfiles";
-    this.getFriends = function(pid, successFunction, errorFunction)
+    var api__ctrl_url = api_url + "common/GetProfileByLocation";
+    this.getSearchByLocation = function(searchCriteria, successFunction, errorFunction)
     {
-        ajaxService.ajaxGetWithParam(api__ctrl_url, pid, successFunction, errorFunction);
+        ajaxService.ajaxPost(api__ctrl_url, searchCriteria, successFunction, errorFunction);
     };
 }

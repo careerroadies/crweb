@@ -16,6 +16,7 @@ crApp.service("ajaxService", ['$http', function ($http)
         }).error(function (response) { errorFunction(response) });
     };
 
+
     this.ajaxPost = function (route, data, successFunction, errorFunction) {
         $http.post(route, data).success(function (response, status) {
             successFunction(response, status);

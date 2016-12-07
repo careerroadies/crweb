@@ -1,8 +1,8 @@
 ﻿// This is common controller for profile dashboard display.
 
-crApp.controller("dashboardController", ['$scope', 'dashboardService', dashboardController]);
+crApp.controller("dashboardController", ['$scope', 'dashboardService', 'fillComboService', '$filter', dashboardController]);
 
-function dashboardController($scope, dashboardService)
+function dashboardController($scope, dashboardService, fillComboService, $filter)
 {
     $scope.buttonshow = false;
     $scope.showModal = false;
@@ -32,8 +32,11 @@ function dashboardController($scope, dashboardService)
     $scope.initializeController = function ()
     {
         $scope.welcomeMessage = "Welcome Mr.Deepak Bhardwaj.";
-        $scope.showFriends();
-        
+        //$scope.showFriends(); 
+        $scope.location = "";
+        $scope.city = "";
+        $scope.state = "";
+        fillComboService.fillCombo('GetState', null, $scope.fillStateComboComplete, $scope.fillComboError);
     }
     
 
@@ -41,22 +44,32 @@ function dashboardController($scope, dashboardService)
     {
         $scope.showDataLimit = $scope.showDataLimit+5;
     }
-    $scope.showFriendComplete = function (response, status)
+    $scope.showusersComplete = function (response, status)
     {
         $scope.friendsList = response;
         $scope.buttonshow = true;
     }
 
-    $scope.showFriendserror = function (respose, status)
+    $scope.showuserserror = function (respose, status)
     {
         $scope.error = "Error in showing friend list."; 
     }
 
-    $scope.showFriends = function ()
+    $scope.showUsers = function ()
     {
-        dashboardService.getFriends(1, $scope.showFriendComplete, $scope.showFriendserror);
+        var objsearch = $scope.searchParameter();
+        dashboardService.getSearchByLocation(objsearch, $scope.showusersComplete, $scope.showuserserror);
         
     };
+
+    $scope.searchParameter = function ()
+    {
+        var searchparameter = new Object();
+        searchparameter.location = $scope.location;
+        searchparameter.city = $scope.city;
+        searchparameter.state = $scope.state;
+        return searchparameter;
+    }
 
     $scope.showDiv = function (item)
     {
@@ -65,4 +78,30 @@ function dashboardController($scope, dashboardService)
     $scope.hideDiv = function (item) {
         item.showdivelm = false;
     }
+
+    $scope.states = "";
+    $scope.fillStateComboComplete = function (response, status) {
+        $scope.states = response;
+        console.log($scope.states);
+    }
+
+    $scope.fillCityComboComplete = function (response, status) {
+        $scope.cities = response;
+    }
+
+    $scope.fillComboError = function (response, status) {
+        $scope.error = "error in fill combo";
+        console.log($scope.error);
+    }
+    $scope.getStateCities = function (state) {
+        if (state) {
+            ($filter('filter')(fillComboService.fillCombo('GetCity', state, $scope.fillCityComboComplete, $scope.fillComboError)));
+            $scope.childSelectIsDisabled = true;
+        }
+        else {
+            $scope.cities = null;
+            $scope.childSelectIsDisabled = false;
+        }
+    };
+
 }
