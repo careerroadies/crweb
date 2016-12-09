@@ -3,7 +3,7 @@
     this is the main module for application. we create a module for app which is used in entire application. 
 */
 
-var crApp = angular.module("crApp", ['ngRoute', 'ngMessages', 'ngSanitize']);
+var crApp = angular.module("crApp", ['ngRoute', 'ngMessages', 'ngSanitize', 'ui.scroll', 'ui.scroll.jqlite']);
 
 
 

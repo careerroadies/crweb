@@ -682,6 +682,7 @@
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="css\font-awesome.min.css" />
+    <Content Include="css\scroll.css" />
     <Content Include="css\style.css" />
     <Content Include="css_old\flexslider-min.css" />
     <Content Include="css_old\login.css" />
