@@ -2611,7 +2611,6 @@
     <Content Include="components\shared\controllers\home.ctrl.js" />
     <Content Include="Scripts\jquery-1.9.1.min.map" />
     <Content Include="Scripts\jquery.leanModal.min.js" />
-    <Content Include="Scripts\login.js" />
     <Content Include="Scripts\ui-scroll-grid.js" />
     <Content Include="Scripts\ui-scroll-grid.min.js" />
     <Content Include="Scripts\ui-scroll-jqlite.js" />
